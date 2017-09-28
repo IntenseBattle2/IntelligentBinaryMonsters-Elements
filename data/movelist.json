@@ -1,0 +1,54 @@
+//Full move list
+"ignit":{
+  "flame bellows":{
+    "description":"Shoots a flame in a jetstream formation, burning anything in its path.",
+    "aspects":"ignit,wisr",
+    "type":"burn"
+  }
+  "flame pillar":{
+    "description":"Summons a hollow pillar of flame around the user, acting as a source of protection",
+    "aspects":"ignit,jivb",
+    "type":"Defense,burn;"
+  }
+},
+"Tera":{
+  "Rock Bellows":{
+    "description":"Uses rocks and debris, lifting them off the ground and launching them at the target, so long as they contain certain minerals.",
+    "aspects":"Tera,Elo,Wisr",
+    "type":"Blunt,bullet:random;"
+  },
+  "Iron Arrangement":{
+     "description":"Pulls rocks and ores with traces of iron and other metallic elements from the ground, forming pillars around the user. A good defensive attack if pulled off right.",
+     "aspects":"Tera,Elo,Cryset,Jivb",
+     type:"Blunt,push;"
+  },
+  "Rock Wall":{
+    "description":"Pulls up the ground to form a decently sized wall. Not a very strong defense, but it's better than nothing.",
+    "aspects":"Tera,Elo",
+    "type":"Defensive,push;"
+  }
+},
+"Aciwa":{
+  "Ocean Bellows":{
+    "description":"Shoots a strong blast of water in a jetstream formation, inflicting heavy damage to the target and knocking them back.",
+    "aspects":"Aciwa,Wisr",
+    "type":"Offensive,knockback,blunt;Conditions:repratory-drowning;"
+  },
+  "Ocean's Halo":{
+    "description":"Forms a very powerful current around any casting point, drowning anything that comes in contact with it.",
+    "aspects":"Aciwa,Jivb",
+    "type":"Defensive,blunt,captive;Bonus:tearing;Conditions:repratory-drowning;"
+  }
+}
+"Wi":{
+  "Gust Bellows":{
+    "description":"Blows forth a gust of wind, mostly causing knockback, but can also halt breathing depending on how it's cast.",
+    "aspects":"Wi,Wisr",
+    "type":"Nodamage,knockback;Conditions:respratory-nobreath0ms;"
+  },
+  "Tornado Barrier":{
+    "description":"Surrounds any target in a... tornado barrier. Blocks almost all attacks and rips nearly everything to shreds.",
+    "aspects":"Wi,Jivb",
+    "type":"Defensive,tearing,nobreath,capture{2-99sRi}->throw{24-900mphRe};MakeSevere:tearing;Windspeed:attr-throw;MakeFatal:90%;"
+  }
+}
