@@ -52,42 +52,21 @@ inv.slots.makeslot=function(slotname){
     }else{
       inv.slots[slotname]={"items":{},"config":{}};
       inv.slots[slotname].config=inv.config.slots.defaultConfig;
-      inv.slots[slotname].addItem=function(name,dataobj){ //NTS: "this" accesses parent container (inv.slot[slotname]), NOT function!
-        if(name!="" && typeof name=="string" && this.items.length<this.config.slots){
-          if(this.items[name]!=undefined){
-            if(this.items[name].stackMax>1 && this.items[name].count<this.items[name].stackMax){
-              this.items[name].count+=1;
-            }else{
-              console.log("Inv-info: Item '"+name+"' reached stacking maximum of "+this.items[name].stackMax+"--you can increase stack maximum with the stackMax property.");
-              if(inv.config.items.multiItemPrefix!=""){
-                name+=inv.config.items.multiItemPrefix;
-                this.items[name]=dataObj;
-              }else{
-                console.log("Inv-info: There is no multi-item prefix; unable to pick up item. Please refer to the User's Manual to learn how to set this up.");
-              }
-            }
-          }else{
-           this.items[name]=dataObj;
-          }
-        }else{
-          if(name=="")
-            console.log("Inv-error: Item name cannot be left empty!");
-          if(typeof name!="string"){
-            console.log("Inv-error: Item name must be a string!");
-          if(this.items.length==this.config.slots)
-            console.log("Inv-info: Inventory slots are filled up to max. You can change this in the slot config under 'slots'.");
-          return;
-        }
-        console.log("Inv-info: Item added.");
-      }
-    }
+      inv.slots[slotname].addItem=function(name,dataObj){ //NTS: "this" accesses parent container (inv.slot[slotname]), NOT function!
+        if(name!="" && typeof name=="string" && this.items.length<this.config.slots){  var thisItem=this.items[name];
+         if(thisItem!=undefined){  if(thisItem.stackMax>1 && thisItem.count<thisItem.stackMax){  this.items[name].count+=1;  }
+            else{  console.log("Inv-info: Item '"+name+"' reached stacking maximum of "+thisItem.stackMax+"."); var itemsConfig=inv.config.items;
+              if  (itemsConfig.multiItemPrefix!=""){  name+=itemsConfig.multiItemPrefix;thisItem=dataObj;  }
+              else{console.log("Inv-info: There is no multi-item prefix; unable to pick up item. Please refer to the User's Manual to learn how to set this up.");}}}
+         else{this.Item=dataObj;}}
+         else{if(name==""){               console.log("Inv-error: Item name cannot be left empty!");  }
+              if(typeof name!="string"){  console.log("Inv-error: Item name must be a string!");      }
+              if(this.items.length==this.config.slots)
+               console.log("Inv-info: Inventory slots are filled up to max. You can change this in the slot config under 'slots'.");
+              return;}
+        console.log("Inv-info: Item added.");}}
   }else{
-    if(typeof slotname!="string"){
-      console.log("Inv-error: Slotname must be a string!");
-      return;
-    }if(slotname==""){
-      console.log("Inv-error: Slotname cannot be left empty!");
-      return;
-    }
+    if(typeof slotname!="string"){  console.log("Inv-error: Slotname must be a string!");      }
+    if(slotname==""){               console.log("Inv-error: Slotname cannot be left empty!");  }
   }
 };
